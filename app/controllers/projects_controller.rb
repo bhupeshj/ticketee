@@ -51,7 +51,7 @@ private
 	def project_params
 		params.require(:project).permit(:name, :description)
 	end
-private
+
 	def set_project
 		@project = Project.find(params[:id])
 	rescue ActiveRecord::RecordNotFound
