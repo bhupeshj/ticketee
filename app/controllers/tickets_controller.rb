@@ -38,10 +38,12 @@ class TicketsController < ApplicationController
     end
 
   end
-
   def destroy
-
+    @ticket.destroy
+    flash[:notice]="Ticket has been deleted."
+    redirect_to @project
   end
+
   private
   def ticket_params
     params.require(:ticket).permit(:title,:description)
@@ -49,7 +51,6 @@ class TicketsController < ApplicationController
   def set_project
     @project = Project.find(params[:project_id])
   end
-
   def set_ticket
     @ticket =@project.tickets.find(params[:id])
   end
